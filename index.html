@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snakely — Snake Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="score">
+        <span class="score-label">SCORE</span>
+        <span id="score">0</span>
+    </div>
+
+    <div class="stage">
+        <div class="game-over" id="gameOver">
+            <h1>GAME OVER</h1>
+            <p>Твой результат: <span id="finalScore">0</span></p>
+            <button id="restart">Играть снова</button>
+        </div>
+    </div>
+
+    <div class="instructions">
+        <span>↑ ↓ ← →</span>
+        <span>или WASD для управления</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

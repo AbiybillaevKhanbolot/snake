@@ -1,0 +1,220 @@
+
+/* ========================================
+   GENERAL
+======================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background: radial-gradient(circle at center, #333 0%, #181818 55%, #080808 100%);
+    color: #fff;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ========================================
+   SCORE
+======================================== */
+
+.score {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+}
+
+.score-label {
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 4px;
+}
+
+#score {
+    font-size: 25px;
+    font-weight: bold;
+    color: rgba(255,255,255,0.8);
+}
+
+/* ========================================
+   STAGE
+======================================== */
+
+.stage {
+    position: relative;
+    width: min(84vw, 1120px);
+    height: min(68vh, 640px);
+    max-width: calc(100vw - 30px);
+    background: rgba(0,0,0,0.12);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 5px;
+    box-shadow:
+        0 0 60px rgba(0,0,0,0.3),
+        inset 0 0 40px rgba(0,0,0,0.2);
+    overflow: hidden;
+    z-index: 2;
+}
+
+/* ========================================
+   TILES
+======================================== */
+
+.tile {
+    position: absolute;
+    background: rgba(255,255,255,0.025);
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.tile.path {
+    background: rgba(255,255,255,0.055);
+}
+
+.tile.pressed {
+    background: rgba(255,255,255,0.11);
+    box-shadow: inset 0 0 12px rgba(0,0,0,0.4);
+}
+
+/* ========================================
+   SNAKE
+======================================== */
+
+.snake {
+    position: absolute;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow:
+        0 0 7px rgba(255,255,255,0.8),
+        0 0 18px rgba(255,255,255,0.35);
+    z-index: 3;
+    transition: left 80ms linear, top 80ms linear;
+}
+
+/* ========================================
+   FOOD
+======================================== */
+
+.food {
+    position: absolute;
+    background: #baff55;
+    border-radius: 4px;
+    box-shadow:
+        0 0 8px #baff55,
+        0 0 20px rgba(186,255,85,0.8),
+        0 0 35px rgba(186,255,85,0.3);
+    animation: pulse 1s ease-in-out infinite alternate;
+    z-index: 2;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(0.75);
+        opacity: 0.7;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   GAME OVER
+======================================== */
+
+.game-over {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    backdrop-filter: blur(8px);
+}
+
+.game-over.show {
+    display: flex;
+}
+
+.game-over h1 {
+    font-size: clamp(26px, 5vw, 42px);
+    letter-spacing: 5px;
+    margin-bottom: 15px;
+}
+
+.game-over p {
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 25px;
+}
+
+#restart {
+    background: white;
+    border: none;
+    border-radius: 5px;
+    padding: 13px 28px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#restart:hover {
+    background: #baff55;
+    transform: scale(1.05);
+}
+
+/* ========================================
+   INSTRUCTIONS
+======================================== */
+
+.instructions {
+    position: absolute;
+    bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.3);
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.instructions span:first-child {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+    .stage {
+        width: 94vw;
+        height: 62vh;
+    }
+
+    .score {
+        top: 18px;
+    }
+
+    .instructions {
+        bottom: 15px;
+    }
+}
